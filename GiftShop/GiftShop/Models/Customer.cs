@@ -1,6 +1,10 @@
-﻿namespace GiftShop.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace GiftShop.Models
 {
-    public class Customer
+    public class Customer:IdentityUser
     {
+        public string Name { get; set; }
+        public ICollection<Item> items { get; set; }
     }
 }
