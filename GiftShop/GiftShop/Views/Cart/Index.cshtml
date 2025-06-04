@@ -1,0 +1,27 @@
+﻿@model List<Item>
+
+<h2>Your Cart</h2>
+
+@if (!Model.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    @foreach (var item in Model)
+    {
+        <div style="margin-bottom: 15px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+            <img src="@Url.Content(item.ImgUrl)" style="height:80px; width:80px;" alt="@item.ItemName" />
+            <div><strong>@item.ItemName</strong></div>
+            <div>@item.Price</div>
+
+            <form asp-action="RemoveFromCart" method="post" style="margin-top: 5px;">
+                <input type="hidden" name="itemId" value="@item.ItemID" />
+                <button type="submit">Remove</button>
+            </form>
+        </div>
+
+    }
+}
+
+<a href="/Item/Select">Continue Shopping</a>

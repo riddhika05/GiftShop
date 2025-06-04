@@ -1,0 +1,21 @@
+﻿@model List<Item>
+
+<h2>Select an Item</h2>
+
+@foreach (var item in Model)
+{
+    <form asp-action="AddtoCart" method="post">
+        <div style="margin-bottom: 15px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+            <input type="hidden" name="itemName" value="@item.ItemName" />
+            <input type="hidden" name="imgUrl" value="@item.ImgUrl" />
+            <input type="hidden" name="price" value="@item.Price" />
+
+            <img src="@Url.Content(item.ImgUrl)" style="height:100px ;width:100px" />
+            <div>@item.ItemName</div>
+            <div>@item.Price</div>
+            <button type="submit">Add to Cart</button>
+        </div>
+    </form>
+}
+
+<a href="/Cart">Go to Cart</a>
